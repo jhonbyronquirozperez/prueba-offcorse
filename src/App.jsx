@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import UserCard from "./components/UserCard";
 
+
+
+
 export default function App() {
   const [users, setUsers] = useState([]);
   const [q, setQ] = useState("");
@@ -36,6 +39,11 @@ export default function App() {
     return () => controller.abort();
   }, []);
 
+  /**Implementaciòn del punto #6
+   * mostrar cargando... mientras carga la API
+   * Mostrar un mensaje de error si falla la peticiòn
+   */
+
   const term = q.trim().toLowerCase();
   const filtered = term
     ? users.filter((u) => (u.name || "").toLowerCase().includes(term))
@@ -55,9 +63,17 @@ export default function App() {
       </p>
     );
 
+
+ // retorno e implementación de la barra de búsqueda y el filtrado de usuarios   
+
   return (
     <main className="container">
-      <h1>Usuarios</h1>
+      <div className="header">
+        <h1>Prueba Técnica - Jhon Byron Quiroz Perez</h1>
+        <img src="https://offcorss.vtexassets.com/arquivos/header__logo-offcorss.png" alt="" />
+      </div>
+      
+      
 
       <label htmlFor="search" className="sr-only">
         Buscar por nombre
@@ -91,4 +107,6 @@ export default function App() {
       )}
     </main>
   );
+
+  
 }

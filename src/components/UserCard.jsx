@@ -2,7 +2,7 @@ import React from "react";
 
 export default function UserCard({ name, email, city }) {
   return (
-    <article className="card">
+    <article className="card card--burst">
       <h2 className="title">{name}</h2>
       <p className="meta">
         <strong>Correo:</strong> {email}
