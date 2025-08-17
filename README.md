@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# Prueba Técnica Offcorss - Jhon Byron Quiroz Perez
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es una solución para la prueba técnica de Offcorss.  
+Consiste en una aplicación React que consume una API pública de usuarios, permite buscar por nombre y muestra los resultados en tarjetas animadas y responsivas.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Estructura del Proyecto
 
-### `npm start`
+```
+solucion/
+├── public/
+│   └── ... (archivos estáticos y manifest)
+├── src/
+│   ├── App.jsx         # Componente principal, lógica y renderizado
+│   ├── App.css         # Estilos globales, animaciones y responsividad
+│   ├── components/
+│   │   └── UserCard.jsx # Tarjeta reutilizable para mostrar usuarios
+│   └── ... (archivos de configuración y utilidades)
+├── package.json        # Dependencias y scripts
+└── README.md           # Este documento
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ¿Cómo funciona la aplicación?
 
-### `npm test`
+1. **Carga de usuarios:**  
+   Al iniciar, la app realiza una petición a la API [jsonplaceholder](https://jsonplaceholder.typicode.com/users) usando `fetch` y `AbortController` para manejar cancelaciones si el componente se desmonta.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Barra de búsqueda:**  
+   Permite filtrar usuarios por nombre en tiempo real. El filtro es insensible a mayúsculas/minúsculas y espacios.
 
-### `npm run build`
+3. **Tarjetas animadas:**  
+   Cada usuario se muestra en una tarjeta (`UserCard`) con animaciones de hover y variantes de color.  
+   Las tarjetas son accesibles y responsivas.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Animación de fondo:**  
+   El fondo de la app tiene una animación suave usando CSS puro, mejorando la experiencia visual.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. **Estados de carga y error:**  
+   Mientras se carga la API, se muestra un mensaje de "Cargando...".  
+   Si ocurre un error, se muestra un mensaje accesible.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+6. **Accesibilidad y buenas prácticas:**  
+   - Etiquetas y roles ARIA para lectores de pantalla.
+   - `label` oculto visualmente para la barra de búsqueda.
+   - Navegación por teclado en tarjetas.
+   - Respeto por usuarios que prefieren menos animaciones (`prefers-reduced-motion`).
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ¿Cómo ejecutar el proyecto?
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Instalación de dependencias:**
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Ejecutar en modo desarrollo:**
+   ```bash
+   npm start
+   ```
+   La app estará disponible en [http://localhost:3000](http://localhost:3000).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Detalles técnicos y decisiones
 
-### Code Splitting
+- **React + Hooks:**  
+  Toda la lógica está basada en hooks (`useState`, `useEffect`) para mantener el código limpio y moderno.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **CSS puro y optimizado:**  
+  Los estilos están en `App.css`, usando variables CSS, animaciones y media queries para responsividad y accesibilidad.
 
-### Analyzing the Bundle Size
+- **Componentización:**  
+  El componente `UserCard` es reutilizable y admite variantes visuales.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Performance:**  
+  El filtrado es eficiente y la animación de fondo no afecta el rendimiento.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Accesibilidad y Responsividad
 
-### Advanced Configuration
+- **Mobile-first:**  
+  El diseño se adapta a cualquier tamaño de pantalla.
+- **Accesibilidad:**  
+  Roles, etiquetas y navegación por teclado implementados.
+- **Animaciones:**  
+  Se respetan las preferencias del usuario para reducir movimiento.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Personalización
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Puedes cambiar la fuente de datos modificando la URL en `App.jsx`.
+- Los estilos y animaciones pueden ajustarse fácilmente en `App.css`.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Autor
+
+**Jhon Byron Quiroz Perez**  
+[LinkedIn](https://www.linkedin.com/in/jhon-quiroz/) | [Portafolio](https://jhonbyronquiroz.com/)
+
+---
+![demo](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjITfopdvFBGOyDvovy1I921eVQfR4coeYgVOPiXSzd_xLunnS9jFRztxbkE2WlEEBN-Y7k9bie5-sWLXtDE8YwLG8kiM-qqgrlFdKQ0LG2IMcRmaOlcClnZOqoOza-6C6kfaN99E13JyGtqgPmvaELXSLtER1PqR5RoQMW-LId74jeSG-NpFJpGHdscPc/s320/Untitled%20design.gif)

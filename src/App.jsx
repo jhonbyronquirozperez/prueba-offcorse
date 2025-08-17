@@ -3,8 +3,6 @@ import "./App.css";
 import UserCard from "./components/UserCard";
 
 
-
-
 export default function App() {
   const [users, setUsers] = useState([]);
   const [q, setQ] = useState("");
